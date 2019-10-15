@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-6 mx-auto">
+    <div class="input-group my-5">
+      <input type="text" class="form-control" placeholder="Назва статті" [(ngModel)]="searchText" name="searchText">
+    </div>
+  </div><!-- /.col-lg-4 -->
+</div><!-- /.row -->
+
+<div class="container-fluid">
+  <div class="blogWrapper d-flex flex-wrap justify-content-around align-items-center px-0 py-2">
+    <!-- normal -->
+    <div class="ih-item square effect10 bottom_to_top m-1 my-2"  *ngFor="let item of blog | filter: searchText |paginate: { itemsPerPage: 8, currentPage: p }">
+      <a routerLink="/blog/{{item.id}}" >
+        <div class="img"><img src="{{item.img}}" alt="img"></div>
+        <div class="info d-flex flex-column justify-content-between">
+          <div class="blogTitle p-4">
+            <h3>{{item.title}}</h3>
+           </div>
+          <p><span>{{item.shortContent}}</span></p>
+          <a routerLink="/blog/{{item.id}}"  class="blogDetails mb-2"><span>Читати більше</span></a>
+        </div>
+      </a>
+    </div>
+    <!-- end normal -->
+  </div>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</div>
+<!--scroll-->
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <div (click)="scrollToTop()">
+    <i class="fas fa-chevron-circle-up"></i>
+  </div>
+</div>

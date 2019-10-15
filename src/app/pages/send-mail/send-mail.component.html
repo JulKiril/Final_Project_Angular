@@ -1,0 +1,113 @@
+
+<h3 class="text-center m-5 titleMailForm">Будь ласка, заповніть форму.</h3>
+<div class="container-fluid">
+  <div class="formWrapp bg-white p-3 my-2">
+<form [ngClass]={visibility:toShow}>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">ПІБ</label>
+      <input required pattern="^[A-Za-zА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ' ]*[A-Za-zА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'][A-Za-zА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ' ]*$" type="text" class="form-control" id="inputName" placeholder="ПІБ"
+             [(ngModel)]="inputName" name="inputName" #name="ngModel">
+      <div class="alert alert-danger" *ngIf="name.errors?.required && name.touched" >
+        Вкажіть будь ласка Ваше ім'я
+      </div>
+      <div class="alert alert-danger" *ngIf="name.invalid && name.touched && !name.errors?.required" >
+        Ім'я вказано не вірно.Ім'я може містити букви,пробіли та апостроф.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input required pattern="^[\w\.]+@[a-zA-Z]+\.[a-z]{2,5}(\.[a-z]{2,4})?$" type="email" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]="inputEmail" name="inputEmail" #email="ngModel">
+      <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched">
+        Введіть будь ласка електронну адресу
+      </div>
+      <div class="alert alert-danger" *ngIf="email.invalid && email.touched && !email.errors?.required">
+        Електронна адреса введена невірно
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="phoneNumber">Номер телефону</label>
+      <input (focus)="focusFunction()" (input)="inputFunction()" required pattern="^\+38\((093|079|063|066|095|067|097)\)-\d{3}-\d{2}-\d{2}$" type="text" class="form-control" id="phoneNumber"
+             [(ngModel)]="inputPhoneNumber" name="inputPhoneNumber" #formNumber="ngModel">
+      <div class="alert alert-danger" *ngIf="formNumber.errors?.required && formNumber.touched" >
+        Вкажіть будь ласка контактний номер телефону
+      </div>
+      <div class="alert alert-danger" *ngIf="formNumber.invalid && formNumber.touched && !formNumber.errors?.required" >
+        Вкажіть номер телефону в такому форматі: +38(___)-___-__-__
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputService">Оберіть послугу</label>
+      <select required id="inputService" class="form-control" [(ngModel)]="inputService" name="inputService" #service="ngModel">
+        <option *ngFor="let service of services" [value]="service.title">{{service.title}}</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="service.errors?.required && service.touched" >
+        Оберіть будь ласка бажану послугу
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputDate">Оберіть дату</label>
+      <div class="input-group mb-0">
+        <input required type="text" class="form-control" id="inputDate" [matDatepicker]="picker"
+               aria-describedby="basic-addon2" [(ngModel)]="inputDate" name="inputDate" #wishDate="ngModel">
+        <div class="input-group-append">
+          <span class="input-group-text p-0" id="basic-addon2">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker></span>
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="wishDate.errors?.required && wishDate.touched" >
+        Оберіть будь ласка бажану дату
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputTime">Оберіть бажаний час</label>
+      <select required id="inputTime" class="form-control" [(ngModel)]="inputTime" name="inputTime" #wishTime="ngModel">
+        <option>8-00</option>
+        <option>9-00</option>
+        <option>10-00</option>
+        <option>11-00</option>
+        <option>12-00</option>
+        <option>13-00</option>
+        <option>14-00</option>
+        <option>15-00</option>
+        <option>16-00</option>
+        <option>17-00</option>
+        <option>18-00</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="wishTime.errors?.required && wishTime.touched" >
+        Оберіть будь ласка бажаний час
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn sendMailBtn" data-toggle="modal" data-target="#infoModal" (click)="isSendMail()">Відправити</button>
+</form>
+  </div>
+</div>
+
+<!--modal-->
+<div class="modal" id="infoModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">{{titleMessage}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{infoMessage}}</p>
+      </div>
+      <div class="modal-footer">
+        <button [ngClass]={visibility:routeBtn} type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/home"
+                (click)="isShow()">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [ngClass]={visibility:closeBtn}>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+
+.social{
+  font-size: 2em;
+}
+.footer-copyright{
+  background-color: rgba(255,250,250, 0.6);
+}
+
+.calcBtn{
+  background-color: var(--mainColor);
+}
+.calcBtn:focus{
+  box-shadow: none;
+}
+.calcBtn:hover{
+  opacity: 0.8;
+}
+.fa-female{
+  color: var(--mainColor);
+}
+.fa-male {
+  color: lightgray;
+}
+

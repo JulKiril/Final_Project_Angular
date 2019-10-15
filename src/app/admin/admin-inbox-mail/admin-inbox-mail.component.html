@@ -1,0 +1,30 @@
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">ПІБ</th>
+    <th scope="col">Email</th>
+    <th scope="col">Телефон</th>
+    <th scope="col">Послуга</th>
+    <th scope="col">Бажана дата</th>
+    <th scope="col">Бажаний час</th>
+    <th scope="col">Час відправлення</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of mailAdmin">
+    <td>{{item.id}}</td>
+    <td>{{item.uName}}</td>
+    <td>{{item.uEmail}}</td>
+    <td>{{item.uPhoneNumber}}</td>
+    <td>{{item.serviceName}}</td>
+    <td>{{item.wishDate | date:'dd-MM-yyyy'}}</td>
+    <td>{{item.wishTime }}</td>
+    <td>{{item.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="isDelMessage(item)">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>`
+

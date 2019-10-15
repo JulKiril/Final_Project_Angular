@@ -1,0 +1,73 @@
+.recipeWrapper{
+  background-color: rgba(255,255,255, 0.7);
+  box-shadow: 2px 2px 3px gray;
+  font-family: 'IntroRegular';
+}
+.nav .nav-link{
+  font-family: 'IntroRegular';
+  font-size: 20px;
+}
+
+.container{
+  background-color: white;
+}
+.card {
+  border-radius: 0;
+  border: none;
+  box-shadow: 7px 7px 20px rgba(99,34,59,.1);
+  transition: all .3s ease;
+  overflow: hidden;
+  height: 360px;
+  width: 250px;
+}
+.card-img-top{
+  border-radius: 0;
+  height: 230px;
+}
+.card:hover .card-body{
+  background-color: var(--mainColor);
+}
+.card:hover .recipeDetails{
+  color: white;
+}
+
+.card:hover {
+ box-shadow: none;
+  cursor: pointer;
+}
+.recipeDetails{
+  color: var(--mainColor);
+}
+
+.recipeDetails span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.recipeDetails span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.4s;
+}
+
+.recipeDetails:hover span {
+  padding-right: 25px;
+}
+.recipeDetails:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.active{
+  color: var(--mainColor)!important;
+}
+.nav-link{
+  cursor: pointer;
+}
+.nav-item:not(:last-child){
+  border-right: 2px solid lightgray;
+}

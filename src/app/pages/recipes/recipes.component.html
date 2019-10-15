@@ -1,0 +1,31 @@
+<ul class="nav flex-nowrap justify-content-center">
+  <li class="nav-item my-5" *ngFor="let category of categories">
+    <a class="nav-link" (click)="onSelectItem(category.name)" [class.active]="category.name == activeItem" (click)="filterName(category)">{{ category.name }}</a>
+  </li>
+</ul>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="input-group mb-5">
+        <input type="text" class="form-control" placeholder="Введіть назву рецепта" [(ngModel)]="searchText" name="searchText">
+      </div>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+  <div class="container-fluid">
+    <div  class="recipeWrapper d-flex flex-wrap justify-content-center align-items-center">
+      <div data-aos="zoom-in" data-aos-duration="1000"  class="card m-3" *ngFor="let recipe of recipes | filter: searchText | category: 'name' : categoryName |paginate: { itemsPerPage: 8, currentPage: p }">
+        <img class="card-img-top" src="{{recipe.img}}" alt="Card image cap">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title">{{recipe.title}}</h5>
+          <a routerLink="/recipes/{{recipe.id}}" class="recipeDetails"><span>Прочитати рецепт</span></a>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+<!--scroll-->
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <div (click)="scrollToTop()">
+    <i class="fas fa-chevron-circle-up"></i>
+  </div>
+</div>

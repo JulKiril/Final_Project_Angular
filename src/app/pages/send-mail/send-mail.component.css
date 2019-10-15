@@ -1,0 +1,14 @@
+.input-group-append{
+  height: 38px;
+}
+.sendMailBtn{
+  background-color: var(--mainColor);
+}
+.formWrapp{
+  min-height: 60vh;
+}
+.titleMailForm{
+  font-family: 'FuturaFuturisC';
+  color: black;
+  text-shadow: 2px 2px 2px #a0a0a0;
+}

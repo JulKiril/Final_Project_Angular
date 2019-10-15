@@ -1,0 +1,31 @@
+<h3 class="text-center m-5 titleServices">Послуги</h3>
+<div class="container-fluid">
+  <div class="servicesWrapper d-flex flex-wrap justify-content-center align-items-center">
+    <ul class="nav flex-nowrap justify-content-center">
+      <li class="nav-item my-5" *ngFor="let category of categories">
+        <a class="nav-link" (click)="onSelectItem(category.name)" [class.active]="category.name == activeItem" (click)="filterName(category)">{{ category.name }}</a>
+      </li>
+    </ul>
+      <!-- normal -->
+      <div class="ih-item square effect10 bottom_to_top m-3" *ngFor="let service of services | category: 'name' : categoryName">
+        <a a routerLink="/send-mail">
+        <div class="img"><img src="{{service.img}}" alt="img"></div>
+        <div class="info">
+          <div class="servicePrice p-3">
+            <h3>{{service.title}}</h3>
+            <p>{{service.price}} грн</p>
+          </div>
+          <p><span>{{service.description}}</span></p>
+          <a a routerLink="/send-mail" class="btn btn-outline btn-sm my-0">Замовити послугу</a>
+        </div>
+         </a>
+      </div>
+      <!-- end normal -->
+  </div>
+</div>
+<!--scroll-->
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <div (click)="scrollToTop()">
+    <i class="fas fa-chevron-circle-up"></i>
+  </div>
+</div>

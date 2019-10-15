@@ -1,0 +1,52 @@
+/*nav .navbar .navbar-light{*/
+  /*font-family: 'Lato', sans-serif;*/
+  /*font-family: 'Fira Sans Condensed', sans-serif;*/
+/*}*/
+.brandImg{
+  padding: 0;
+}
+.navbar{
+  padding: .0rem 1rem;
+  font-size: 20px;
+  font-family: 'FuturaFuturisC';
+  text-transform: uppercase;
+}
+.active{
+  color: rgb(154,191,51)!important;
+}
+.nav-item .nav-link{
+  color: inherit;
+}
+
+.hov:before, .nav-link:after {
+  content: '';
+  position: absolute;
+  transition: transform .5s ease;
+}
+.nav-link {
+  padding-top: 10px;
+}
+.hov:before {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--mainColor);
+  transform: scaleX(0);
+}
+.hov:hover:before {
+  transform: scaleX(1);
+}
+.hov:hover{
+  color: var(--mainColor)!important;
+}
+
+@media(max-width:993px){
+  .socials{
+    display: none;
+  }
+  .navbar{
+    font-size: 16px;
+  }
+}
+

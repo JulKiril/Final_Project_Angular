@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <form>
+    <div class="form-group">
+      <label for="categoryName">Category name</label>
+      <select [(ngModel)]="categoryName" name="categoryName" class="form-control" id="categoryName">
+        <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="recipeTitle">recipeTitle</label>
+      <input [(ngModel)]="recipeTitle" name="recipeTitle" type="text" class="form-control" id="recipeTitle">
+    </div>
+    <div class="form-group">
+      <label for="recipeImg">recipeImg</label>
+      <input [(ngModel)]="recipeImg" name="recipeImg" type="text" class="form-control"id="recipeImg">
+    </div>
+    <div class="form-group">
+      <label for="recipeIngrid">recipeIngrid</label>
+      <input [(ngModel)]="recipeIngrid" name="recipeIngrid" type="text" class="form-control" id="recipeIngrid">
+    </div>
+    <div class="form-group">
+      <label for="recipeDescription">recipeDescription</label>
+      <input [(ngModel)]="recipeDescription" name="recipeDescription" type="text" class="form-control" id="recipeDescription">
+    </div>
+    <button type="button" class="btn btn-success" (click)="isAddRecipe()">Add</button>
+  </form>
+  <table class="table table-hover table-striped mt-2">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">category</th>
+      <th scope="col">title</th>
+      <!--<th scope="col">img_src</th>-->
+      <th scope="col">ingrid</th>
+      <th scope="col">description</th>
+      <th scope="col">edit</th>
+      <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let recipe of recipesAdmin">
+      <td>{{recipe.id}}</td>
+      <td>{{recipe.name}}</td>
+      <td>{{recipe.title}}</td>
+      <!--<td>{{recipe.img}}</td>-->
+      <td>{{recipe.ingrid}}</td>
+      <td>{{recipe.description}}</td>
+      <td>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#editModal"
+                (click)="isEditRecipe(recipe)">edit</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="isDelRecipe(recipe)">delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit recipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="form-group">
+            <label for="editRecipeTitle">Recipe title</label>
+            <input [(ngModel)]="editRecipeTitle" name="editRecipeTitle" type="text" class="form-control"
+                   id="editRecipeTitle">
+          </div>
+          <div class="form-group">
+            <label for="editRecipeImg">ImgSrc</label>
+            <input [(ngModel)]="editRecipeImg" name="editRecipeImg" type="text" class="form-control"
+                   id="editRecipeImg">
+          </div>
+          <div class="form-group">
+            <label for="editRecipeIngrid">Ingrids</label>
+            <input [(ngModel)]="editRecipeIngrid" name="editRecipeIngrid" type="text" class="form-control"
+                   id="editRecipeIngrid">
+          </div>
+          <div class="form-group">
+            <label for="editRecipeDescription">Recipe description</label>
+            <input [(ngModel)]="editRecipeDescription" name="editRecipeDescription" type="text" class="form-control"
+                   id="editRecipeDescription">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="isSaveChangesRecipes()" data-dismiss="modal">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>

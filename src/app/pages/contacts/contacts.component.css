@@ -1,0 +1,61 @@
+.titleContact{
+  font-family: 'FuturaFuturisC';
+  color: black;
+  text-shadow: 2px 2px 2px #a0a0a0;
+}
+.contactWrapper{
+  background-color: rgba(255,255,255, 0.7);
+  box-shadow: 2px 2px 3px gray;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'IntroRegular';
+  font-size: 20px;
+}
+.contactWrapper h4 {
+  flex-basis: 100%;
+}
+.formContainer{
+  flex-basis: 100%;
+}
+.contactWrapper ul{
+  width: 50%;
+}
+.contactWrapper .map{
+  width: 50%;
+}
+.formContainer{
+  background-color: rgba(211,211,211, 0.5);
+}
+.formContainer .sendBtn {
+  font-size: 20px;
+}
+.formContainer .btn{
+  background-color: var(--mainColor);
+}
+.formContainer .btn:hover{
+  opacity: 0.8;
+}
+.help-block{
+  color: red;
+}
+.has-error{
+  margin-bottom: 0;
+}
+input.ng-touched.ng-invalid {
+  border:solid red 2px;
+}
+.bg-lightGray{
+  background-color: lightgray;
+}
+agm-map {
+  height: 300px;
+}
+@media(max-width: 800px) {
+  .contactWrapper ul{
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .contactWrapper .map{
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@font-face {font-family: "Roboto-Regular"; src: url("assets/fonts/FuturaFuturisC.ttf");
+}
+
+:root {
+  --mainColor: rgba(154,191,51, 1);
+}
+body {
+  background: url(./assets/images/8288.jpg) no-repeat fixed;
+  background-size: cover;
+  font-family: SF-UI-Text-Light,Arial,sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+input:focus,textarea:focus,select:focus{
+  border-color: var(--mainColor)!important;
+  box-shadow: 0 1px 1px rgba(154,191,51, 0.075) inset, 0 0 8px rgba(154,191,51, 0.6)!important;
+  outline: 0 none!important;
+}
+.ngx-pagination .current{
+  background: var(--mainColor)!important;
+}
+.ngx-pagination{
+  padding: 20px;
+  text-align: center;
+}
+.linkRight span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.linkRight span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.4s;
+}
+
+.linkRight:hover span {
+  padding-right: 25px;
+}
+.linkRight:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.backBtn{
+  color: rgb(154,191,51)!important;
+  text-transform: uppercase;
+}
+.backBtn span{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-family: SF-UI-Text-Bold,Arial,sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: .05em;
+}
+.backBtn span:before{
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  transition: 0.4s;
+}
+.backBtn:hover span {
+  padding-left: 25px;
+}
+.backBtn:hover span:before {
+  opacity: 1;
+  right: 0;
+}
+.container-fluid{
+  padding: 0 5%;
+}
+input.ng-touched.ng-invalid {
+  border:solid red 2px;
+}
+.visibility{
+  display: none;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+}
+
+
+.fa-chevron-circle-up{
+  color: gray;
+  font-size: 25px;
+}
+.fa-chevron-circle-up:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+.show-scrollTop {
+  opacity: 1;
+  transition: all .2s ease-in-out;
+}
+@media(max-width: 375px) {
+  .scroll-to-top {
+    right: 50px;
+  }
+}

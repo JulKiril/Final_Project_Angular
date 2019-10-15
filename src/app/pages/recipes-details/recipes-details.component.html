@@ -1,0 +1,21 @@
+
+<div class="container-fluid py-3">
+  <a class="backBtn" (click)="goBack()"><span class="mb-3">Повернутися до рецептів</span></a>
+  <div class="recipeWrapp p-5">
+    <h1 class="recipeTitle mb-3">{{view?.title}}</h1>
+    <div class="recipeBook d-flex justify-content-start flex-row flex-wrap">
+      <div class="recipeImg col-lg p-5"><img [attr.src]="view?.img" alt=""></div>
+      <div class="recipeList col-lg p-5">
+        <ul>
+          <li *ngFor="let ing of ingrid" class="py-1">{{ing}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="recipeContent">
+      <ol class="my-3 px-1">
+        <li *ngFor="let item of description">{{item}}</li>
+      </ol>
+    </div>
+  </div>
+  <a class="backBtn" (click)="goBack()"><span class="mt-3">Повернутися до рецептів</span></a>
+</div>

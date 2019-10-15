@@ -1,0 +1,11 @@
+<div class="container-fluid py-5">
+  <div class="wrapper p-5">
+  <a class="backBtn" (click)="goBack()"><span>Повернутися до попередньої сторінки</span></a>
+  <div class="blogWrapp my-3">
+    <h1 class="blogTitle my-3 text-center">{{view?.title}}</h1>
+    <p>{{view?.content}}</p>
+    <div class="blogImg p-0"><img [attr.src]="view?.img" alt=""></div>
+  </div>
+  <a class="backBtn" (click)="goBack()"><span>Повернутися до попередньої сторінки</span></a>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+a{
+  color: black;
+}
+a:hover{
+  background-color: var(--mainColor)!important;
+}
+.nav-pills .nav-link.active{
+  background-color: var(--mainColor)!important;
+}

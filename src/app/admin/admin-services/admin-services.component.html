@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <form>
+    <div class="form-group">
+      <label for="categoryName">Category name</label>
+      <select [(ngModel)]="categoryName" name="categoryName" class="form-control" id="categoryName">
+        <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="serviceTitle">serviceTitle</label>
+      <input [(ngModel)]="serviceTitle" name="serviceTitle" type="text" class="form-control" id="serviceTitle">
+    </div>
+    <div class="form-group">
+      <label for="serviceImg">serviceImg</label>
+      <input [(ngModel)]="serviceImg" name="serviceImg" type="text" class="form-control"id="serviceImg">
+    </div>
+    <div class="form-group">
+      <label for="servicePrice">servicePrice</label>
+      <input [(ngModel)]="servicePrice" name="servicePrice" type="number" class="form-control" id="servicePrice">
+    </div>
+    <div class="form-group">
+      <label for="serviceDescription">serviceDescription</label>
+      <input [(ngModel)]="serviceDescription" name="serviceDescription" type="text" class="form-control" id="serviceDescription">
+    </div>
+    <button type="button" class="btn btn-success" (click)="isAddService()">Add</button>
+  </form>
+  <table class="table table-hover table-striped mt-2">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">category</th>
+      <th scope="col">title</th>
+      <!--<th scope="col">img_src</th>-->
+      <th scope="col">price</th>
+      <th scope="col">description</th>
+      <th scope="col">edit</th>
+      <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let service of servicesAdmin">
+      <td>{{service.id}}</td>
+      <td>{{service.name}}</td>
+      <td>{{service.title}}</td>
+      <!--<td>{{service.img}}</td>-->
+      <td>{{service.price}}</td>
+      <td>{{service.description}}</td>
+      <td>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#editModal"
+                (click)="isEditService(service)">edit</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="isDelService(service)">delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="form-group">
+            <label for="editServiceTitle">Service title</label>
+            <input [(ngModel)]="editServiceTitle" name="editServiceTitle" type="text" class="form-control"
+                   id="editServiceTitle">
+          </div>
+          <div class="form-group">
+            <label for="editServiceImg">ImgSrc</label>
+            <input [(ngModel)]="editServiceImg" name="editServiceImg" type="text" class="form-control"
+                   id="editServiceImg">
+          </div>
+          <div class="form-group">
+            <label for="editServicePrice">editServicePrice</label>
+            <input [(ngModel)]="editServicePrice" name="editServicePrice" type="number" class="form-control"
+                   id="editServicePrice">
+          </div>
+          <div class="form-group">
+            <label for="editServiceDescription">editServiceDescription</label>
+            <input [(ngModel)]="editServiceDescription" name="editServiceDescription" type="text" class="form-control"
+                   id="editServiceDescription">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="isSaveChangesServices()" data-dismiss="modal">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

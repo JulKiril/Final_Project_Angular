@@ -1,0 +1,108 @@
+<h3 class="text-center m-5 titleContact">Зв'яжіться з нами</h3>
+<div class="container-fluid" >
+  <div class="contactWrapper p-5">
+    <h4 class="text-center mb-5">Якщо Ви бажаєте задати питання, отримати додаткову інформацію або запропонувати співпрацю, будь ласка,
+      зв'яжіться з нами по телефону або електронною поштою</h4>
+    <ul class="list-unstyled">
+      <li>
+        <p>
+          <i class="fas fa-home mr-3"></i> Львів, пр.В.Чорновола,112</p>
+      </li>
+      <li>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+      </li>
+      <li>
+        <p>
+          <i class="fas fa-phone mr-3"></i> + 3067 234 567 88</p>
+      </li>
+      <li>
+        <p>
+          <i class="fas fa-print mr-3"></i> + 3096 234 567 89</p>
+      </li>
+    </ul>
+    <div class="map">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+    <h4 class="text-center m-5">Напишіть нам і наш адміністратор відповість Вам найближчим часом</h4>
+    <div [ngClass]={visibility:toShow} class="formContainer col-lg mx-auto pb-2">
+      <form>
+        <div class="form-group">
+          <label for="email" class="control-label"></label>
+          <input id="email" required pattern="^[\w\.]+@[a-zA-Z]+\.[a-z]{2,5}(\.[a-z]{2,4})?$" type="text" class="form-control" name="email"
+                 [(ngModel)]="formEmail" #email="ngModel" placeholder="Enter email">
+          <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched">
+            Введіть будь ласка електронну адресу
+          </div>
+          <div class="alert alert-danger" *ngIf="email.invalid && email.touched && !email.errors?.required">
+            Електронна адреса введена невірно
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name" class="control-label"></label>
+          <input required pattern="^[A-Za-zА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ' ]*[A-Za-zА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'][A-Za-zА-Яа-яа-щА-ЩЬьЮюЯяЇїІіЄєҐґ' ]*$"  type="text" class="form-control" id="name" placeholder="Name"
+                 [(ngModel)]="formName" name="name" #name="ngModel">
+          <div class="alert alert-danger" *ngIf="name.errors?.required && name.touched" >
+            Вкажіть будь ласка Ваше ім'я
+          </div>
+          <div class="alert alert-danger" *ngIf="name.invalid && name.touched && !name.errors?.required" >
+            Ім'я вказано не вірно.Ім'я може містити букви,пробіли та апостроф.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber"></label>
+          <input (focus)="focusFunction()" (input)="inputFunction()" required pattern="^\+38\((093|079|063|066|095|067|097)\)-\d{3}-\d{2}-\d{2}$" type="text" class="form-control" id="phoneNumber" placeholder="phoneNumber"
+                 [(ngModel)]="formPhoneNumber" name="formNumber" #formNumber="ngModel">
+          <div class="alert alert-danger" *ngIf="formNumber.errors?.required && formNumber.touched" >
+            Вкажіть будь ласка контактний номер телефону
+          </div>
+          <div class="alert alert-danger" *ngIf="formNumber.invalid && formNumber.touched && !formNumber.errors?.required" >
+            Вкажіть номер телефону в такому форматі: +38(___)-___-__-__
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message"></label>
+          <textarea required type="text" class="form-control" id="message" placeholder="Message"
+                    [(ngModel)]="formMessage" name="formMessage" #message="ngModel"></textarea>
+          <div class="alert alert-danger" *ngIf="message.errors?.required && message.touched" >
+            Будь ласка введіть повідомлення
+          </div>
+        </div>
+        <button type="submit" class="btn my-2 btn-block sendBtn" data-toggle="modal" data-target="#infoModal"
+                (click)="isAddForm()">Відправити</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--modal-->
+<div class="modal" id="infoModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">{{titleMessage}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{infoMessage}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="/home"
+                (click)="isShow()" [ngClass]={visibility:routeBtn}>Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [ngClass]={visibility:closeBtn}>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--scroll-->
+<div class="scroll-to-top" [ngClass]="{'show-scrollTop': windowScrolled}">
+  <div (click)="scrollToTop()">
+    <i class="fas fa-chevron-circle-up"></i>
+  </div>
+</div>
+
