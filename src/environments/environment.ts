@@ -14,7 +14,7 @@ export const environment = {
     appId: "1:566159205010:web:fed0512b9a772d32"
   },
   googleMapsConfig : {
-    apiKey: 'AIzaSyBCQpeby-wSPIV_c_R6jgVc680ZoWmyagg'
+    apiKey: 'MY_API_KEY'
   }
 };
 
